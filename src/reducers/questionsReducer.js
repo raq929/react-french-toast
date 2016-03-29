@@ -1,19 +1,22 @@
 import objectAssign from 'object-assign';
 
 const initialState = {
-  items:  [
+  items: [
     {
       text: "french toast",
-      active: true,
       index: 0
     },
     {
       text: "a car",
-      active: true,
-      index: 1,
-      next: [{}]
+      next: [2]
+    },
+    { text: "a greyhound",
+      next: []
     }
-  ]
+  ],
+  choiceA: 0,
+  choiceB: 1,
+  asked: [0, 1]
 };
 
 export default function frenchToastAppState(state = initialState, action){
