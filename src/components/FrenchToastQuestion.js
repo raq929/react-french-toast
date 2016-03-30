@@ -1,26 +1,25 @@
 import React, {PropTypes} from 'react';
 
-const frenchToastQuestion = (appState) => {
-  const state = appState.appState
-  let activeQuestions = [];
-  debugger;
+const frenchToastQuestion = ({chooseItem,appState}) => {
+  let activeItems = [];
 
-  activeQuestions.push(state.items[state.choiceA].text);
-  activeQuestions.push(state.items[state.choiceB].text);
+  activeItems.push(appState.items[appState.choiceA].text);
+  activeItems.push(appState.items[appState.choiceB].text);
 
-  const itIs = "It is " + activeQuestions[1] + "!"
+  const itIs = "It is " + activeItems[1] + "!";
 
   return (
     <div>
-    <p> Is it more like {activeQuestions[1]} or is it more like {activeQuestions[0]}? </p>
+    <p> Is it more like {activeItems[1]} or is it more like {activeItems[0]}? </p>
     <input 
       type="button" 
-      value={activeQuestions[1]}
-      onClick={}
+      value={activeItems[1]}
+      onClick={() => chooseItem(appState.choiceA)}
     />
     <input 
       type="button" 
-      value={activeQuestions[0]}
+      value={activeItems[0]}
+      onClick={() => chooseItem(appState.choiceB)}
     />
     <br/>
     <input 

@@ -1,17 +1,23 @@
 import objectAssign from 'object-assign';
+import {CHOOSE_ITEM} from '../constants/ActionTypes';
+debugger;
 
 const initialState = {
   items: [
     {
       text: "french toast",
-      index: 0
+      next: 4
     },
     {
       text: "a car",
-      next: [2]
+      next: 2
     },
     { text: "a greyhound",
-      next: []
+      next: null
+    },
+    {
+      text: "a rock",
+      next: null
     }
   ],
   choiceA: 0,
@@ -20,14 +26,32 @@ const initialState = {
 };
 
 export default function frenchToastAppState(state = initialState, action){
-  // const activeQuestion = state.items.find(function(question){
-  //     return question.active;
-  //   });
+  
 
-  // switch(action.type){
-  //   case MORE_LIKE:
-  //   //if it is more like one of the things, ask the next question
-  //   if()
-  // }
-  return state;
+  switch(action.type) {
+    case CHOOSE_ITEM: 
+    { 
+      //if there is another question, ask it, else ask if it is the thing. 
+      let newState = objectAssign({}, state);
+      //add this question to the asked array
+      //TODO: add other question to asked array
+      newState.asked.push(action.choice);
+      //change this item to choiceA
+      newState.choiceA = action.choice;
+      //if there is a next, make that choiceB
+      if (newState.items[action.choice].next){
+        newState.choiceB = newState.items[action.choice].next;
+      } else {
+        //if there is no next, there is no choice B
+        //TODO: change rendering for no choiceB
+        newState.choiceB = undefined;
+      }
+
+      newState.choiceA = newState.choice;
+
+      return newState;
+    }
+    default:
+      return state;
+  }  
 }
