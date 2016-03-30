@@ -1,25 +1,24 @@
 import React, {PropTypes} from 'react';
 
 const frenchToastQuestion = ({chooseItem,appState}) => {
-  let activeItems = [];
 
-  activeItems.push(appState.items[appState.choiceA].text);
-  activeItems.push(appState.items[appState.choiceB].text);
+  let leftChoice = appState.items[appState.choiceLeft].text;
+  let rightChoice = appState.items[appState.choiceRight].text;
 
-  const itIs = "It is " + activeItems[1] + "!";
+  const itIs = "It is " + rightChoice + "!";
 
   return (
     <div>
-    <p> Is it more like {activeItems[1]} or is it more like {activeItems[0]}? </p>
+    <p> Is it more like {leftChoice} or is it more like {rightChoice}? </p>
     <input 
       type="button" 
-      value={activeItems[1]}
-      onClick={() => chooseItem(appState.choiceA)}
+      value={leftChoice}
+      onClick={() => chooseItem(appState.choiceLeft)}
     />
     <input 
       type="button" 
-      value={activeItems[0]}
-      onClick={() => chooseItem(appState.choiceB)}
+      value={rightChoice}
+      onClick={() => chooseItem(appState.choiceRight)}
     />
     <br/>
     <input 

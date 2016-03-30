@@ -1,12 +1,11 @@
 import objectAssign from 'object-assign';
 import {CHOOSE_ITEM} from '../constants/ActionTypes';
-debugger;
 
 const initialState = {
   items: [
     {
       text: "french toast",
-      next: 4
+      next: 3
     },
     {
       text: "a car",
@@ -20,34 +19,32 @@ const initialState = {
       next: null
     }
   ],
-  choiceA: 0,
-  choiceB: 1,
-  asked: [0, 1]
+  choiceLeft: 1,
+  choiceRight: 0,
+  asked: []
 };
 
 export default function frenchToastAppState(state = initialState, action){
   
-
   switch(action.type) {
     case CHOOSE_ITEM: 
     { 
       //if there is another question, ask it, else ask if it is the thing. 
       let newState = objectAssign({}, state);
       //add this question to the asked array
-      //TODO: add other question to asked array
+      //TODO: add other question to asked array?
       newState.asked.push(action.choice);
-      //change this item to choiceA
-      newState.choiceA = action.choice;
-      //if there is a next, make that choiceB
-      if (newState.items[action.choice].next){
-        newState.choiceB = newState.items[action.choice].next;
+      //change this item to choiceLeft
+      newState.choiceLeft = action.choice;
+      //if there is a next, and it hasn't been asked, make that choiceRight
+      let nextQuestion = newState.items[action.choice].next
+      if (nextQuestion && newState.asked.indexOf(nextQuestion === -1)){
+        newState.choiceRight = nextQuestion;
       } else {
         //if there is no next, there is no choice B
-        //TODO: change rendering for no choiceB
-        newState.choiceB = undefined;
+        //TODO: change rendering for no choiceRight
+        newState.choiceRight = undefined;
       }
-
-      newState.choiceA = newState.choice;
 
       return newState;
     }
