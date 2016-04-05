@@ -6,27 +6,39 @@ const frenchToastQuestion = ({chooseItem,appState}) => {
   let rightChoice = appState.items[appState.choiceRight].text;
 
   const itIs = "It is " + rightChoice + "!";
+  if(rightChoice){
+    return (
+      <div>
+      <p> Is it more like {leftChoice} or is it more like {rightChoice}? </p>
+      <input 
+        type="button" 
+        value={leftChoice}
+        onClick={() => chooseItem(appState.choiceLeft)}
+      />
+      <input 
+        type="button" 
+        value={rightChoice}
+        onClick={() => chooseItem(appState.choiceRight)}
+      />
+      <br/>
+      <input 
+        type="button" 
+        value={itIs}
+      />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>I give up! What is it?</p>
+        <input 
+        type="text" 
+        defaultValue="a girrafe"
+        />
 
-  return (
-    <div>
-    <p> Is it more like {leftChoice} or is it more like {rightChoice}? </p>
-    <input 
-      type="button" 
-      value={leftChoice}
-      onClick={() => chooseItem(appState.choiceLeft)}
-    />
-    <input 
-      type="button" 
-      value={rightChoice}
-      onClick={() => chooseItem(appState.choiceRight)}
-    />
-    <br/>
-    <input 
-      type="button" 
-      value={itIs}
-    />
-    </div>
-  );
+      </div>
+    );
+  }  
 };
 
-export default frenchToastQuestion;
+  export default frenchToastQuestion;
