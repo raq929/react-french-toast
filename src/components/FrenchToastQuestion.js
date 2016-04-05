@@ -6,8 +6,7 @@ const frenchToastQuestion = ({chooseItem,appState}) => {
   let rightChoice = appState.items[appState.choiceRight].text;
 
   const itIs = "It is " + rightChoice + "!";
-  if(rightChoice){
-    return (
+  return (
       <div>
       <p> Is it more like {leftChoice} or is it more like {rightChoice}? </p>
       <input 
@@ -26,19 +25,7 @@ const frenchToastQuestion = ({chooseItem,appState}) => {
         value={itIs}
       />
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>I give up! What is it?</p>
-        <input 
-        type="text" 
-        defaultValue="a girrafe"
-        />
-
-      </div>
-    );
-  }  
+    ); 
 };
 
   export default frenchToastQuestion;
