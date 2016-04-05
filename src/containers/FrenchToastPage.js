@@ -28,6 +28,7 @@ class FrenchToastPage extends Component {
         <div>
         <Title/>
         <GiveUpQuestion
+          createItem={this.props.actions.createItem}
           appState={this.props.appState}
         />
         </div>
