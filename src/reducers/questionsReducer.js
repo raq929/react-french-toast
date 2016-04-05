@@ -37,8 +37,10 @@ export default function frenchToastAppState(state = initialState, action){
       //change this item to choiceLeft
       newState.choiceLeft = action.choice;
       //if there is a next, and it hasn't been asked, make that choiceRight
-      let nextQuestion = newState.items[action.choice].next
-      if (nextQuestion && newState.asked.indexOf(nextQuestion === -1)){
+      if (newState.items[action.choice].next &&
+       newState.asked.indexOf(newState.items[action.choice].next === -1)){
+
+        let nextQuestion = newState.items[action.choice].next;
         newState.choiceRight = nextQuestion;
       } else {
         //if there is no next, there is no choice B
