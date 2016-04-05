@@ -11,5 +11,12 @@ describe("Actions component", () => {
       chooseItem(0).type.should.equal("CHOOSE_ITEM");
     });
   });
+
+  describe("create item action", () => {
+    it("sets the type to CREATE_ITEM", ()=> {
+      createItem.type.should.equal("CREATE_ITEM");
+    });
+  });
 });
+
  
