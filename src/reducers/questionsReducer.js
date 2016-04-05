@@ -48,15 +48,15 @@ export default function frenchToastAppState(state = initialState, action){
 
     return newState;
   } else if (action.type === CREATE_ITEM){
-    let newState = objectAssign({}, state);
-    newState.items.push({text: action.text, next: null});
-    const lastQuestion = state.choiceLeft;
-    newState.items[lastQuestion].next = newState.items.length - 1;
-    //reset game
-    newState.choiceLeft = 1;
-    newState.choiceRight = 0;
-    newState.asked = [];
-    return newState;
+      let newState = objectAssign({}, state);
+      newState.items.push({text: action.text, next: null});
+      const lastQuestion = state.choiceLeft;
+      newState.items[lastQuestion].next = newState.items.length - 1;
+      //reset game
+      newState.choiceLeft = 1;
+      newState.choiceRight = 0;
+      newState.asked = [];
+      return newState;
   } else {
     return state;
   }  
