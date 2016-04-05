@@ -8,9 +8,9 @@ export function chooseItem(itemIndex){
   };
 }
 
-export function createItem(text, lastItemIndex){
+export function createItem(text){
   return {
     type: types.CREATE_ITEM,
-    text: text,
+    text: text
   };
 }
