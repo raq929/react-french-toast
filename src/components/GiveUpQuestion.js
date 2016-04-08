@@ -1,27 +1,23 @@
 import React, {PropTypes} from 'react';
 
-
-
-const GiveUpQuestion = ({createItem, appState}) => {
+const GiveUpQuestion = ({createItem}) => {
   const ENTER_KEY = 13;
-  const handleSubmit = function(event){
-      
-  };
-
+  let inputNode;
   return (
     <div>
-      <p>I give up! What is it?</p>
-      <input 
+      <p>
+        I give up! What is it?
+      </p>
+      <input
           ref={node => {
-            this.input = node;
+            inputNode = node;
           }}
-          type="text" 
-          defaultValue="a giraffe" 
+          type="text"
+          defaultValue="a giraffe"
         />
-
-      <button 
+      <button
         onClick={()=>{
-          createItem(this.input.value);
+          createItem(inputNode.value);
         }}>
         Submit
       </button>
