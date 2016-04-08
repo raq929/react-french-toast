@@ -1,8 +1,8 @@
 import objectAssign from 'object-assign';
 import {CHOOSE_ITEM, CREATE_ITEM} from '../constants/ActionTypes';
 
-const initialState = {
-  items: [
+
+const itemsArray = JSON.parse(window.localStorage.getItem('items')) || [
     {
       text: "french toast",
       next: 3
@@ -18,16 +18,20 @@ const initialState = {
       text: "a rock",
       next: null
     }
-  ],
-  choiceLeft: 1,
-  choiceRight: 0,
+  ];
+
+
+const initialState = {
+  items: itemsArray,
+  choiceLeft: 0,
+  choiceRight: 1,
   asked: []
 };
 
 export default function frenchToastAppState(state = initialState, action){
-  
-  if(action.type === CHOOSE_ITEM) { 
-    //if there is another question, ask it, else ask if it is the thing. 
+
+  if(action.type === CHOOSE_ITEM) {
+    //if there is another question, ask it, else ask if it is the thing.
     let newState = objectAssign({}, state);
     //add this question to the asked array
     //TODO: add other question to asked array?
@@ -53,11 +57,14 @@ export default function frenchToastAppState(state = initialState, action){
       const lastQuestion = state.choiceLeft;
       newState.items[lastQuestion].next = newState.items.length - 1;
       //reset game
-      newState.choiceLeft = 1;
-      newState.choiceRight = 0;
-      newState.asked = [];
+      newState.choiceLeft = initialState.choiceLeft;
+      newState.choiceRight = initialState.choiceRight;
+      newState.asked = initialState.asked;
+      //pass items list to localStorage
+      let localStorage = window.localStorage;
+      localStorage.setItem('items', JSON.stringify(newState.items));
       return newState;
   } else {
     return state;
-  }  
+  }
 }
