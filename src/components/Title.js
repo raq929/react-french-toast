@@ -9,6 +9,6 @@ const Title = () => {
         <h1>Let&#39;s Play French Toast!</h1>
       </div>
     );
-} ;   
+} ;
 
-export default Title; 
+export default Title;
