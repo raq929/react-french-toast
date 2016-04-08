@@ -29,7 +29,6 @@ class FrenchToastPage extends Component {
         <Title/>
         <GiveUpQuestion
           createItem={this.props.actions.createItem}
-          appState={this.props.appState}
         />
         </div>
       )
@@ -50,6 +49,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   mapDispatchToProps
   ) (FrenchToastPage);
