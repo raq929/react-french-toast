@@ -35,7 +35,7 @@ describe("Actions component", () => {
       asked: [0]
 
     };
-    const fakeCreateItemAction = createItem("newItem", 1);
+    const fakeCreateItemAction = createItem("newItem");
     const newState = frenchToastAppState(fakeState, fakeCreateItemAction);
     it("sets the type to CREATE_ITEM", ()=> {
       fakeCreateItemAction.type.should.equal("CREATE_ITEM");
@@ -43,8 +43,5 @@ describe("Actions component", () => {
     it("sets the text to the input text", () => {
       fakeCreateItemAction.text.should.equal("newItem");
     });
-    
   });
 });
-
- 

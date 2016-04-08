@@ -3,7 +3,7 @@ import * as types from '../constants/ActionTypes';
 
 export function chooseItem(itemIndex){
   return {
-    type: types.CHOOSE_ITEM, 
+    type: types.CHOOSE_ITEM,
     choice: itemIndex
   };
 }
